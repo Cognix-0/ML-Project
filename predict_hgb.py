@@ -21,7 +21,7 @@ def predict_csv(path, bundle):
     probs = model.predict_proba(X)[0]                   # 4. pipeline: (imputer) -> Gradient Boosting (HGB)
     best = probs.argmax()
     warnings = [name for name in ("stable_found", "window_ok") if not feats[name]]
-    return {"type": model.classes_[best], "confidence": round(float(probs[best]), 2), "warnings": warnings}
+    return {"type": str(model.classes_[best]), "confidence": round(float(probs[best]), 2), "warnings": warnings}
 
 
 if __name__ == "__main__":
